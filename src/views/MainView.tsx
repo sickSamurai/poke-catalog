@@ -1,13 +1,13 @@
-import { Box, Button, Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import React from 'react'
 
-import { SearchPageForm } from '../components/SearchPageForm'
-import { useMainView } from '../hooks/useMainView'
+import { PageSearcher } from '../components/PageSearcher'
+import { useMySelector } from '../redux/hooks'
 import { LoadingView } from './LoadingView'
 import { PokemonView } from './PokemonView'
 
 export const MainView = () => {
-  const { listIsLoading, goBackPage, goNextPage } = useMainView()
+  const { listIsLoading } = useMySelector(state => state.pokemonReducer)
 
   const ActiveView = listIsLoading ? <LoadingView /> : <PokemonView />
 
@@ -17,13 +17,7 @@ export const MainView = () => {
         {ActiveView}
       </Box>
       <Stack direction='row' spacing={2} marginY={8}>
-        <SearchPageForm />
-        <Button variant='contained' onClick={goBackPage}>
-          BACK
-        </Button>
-        <Button variant='contained' onClick={goNextPage}>
-          NEXT
-        </Button>
+        <PageSearcher />
       </Stack>
     </Box>
   )

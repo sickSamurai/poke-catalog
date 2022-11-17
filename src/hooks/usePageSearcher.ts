@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { useMyDispatch, useMySelector } from '../redux/hooks'
 import { decrementPage, fetchPokemonList, incrementPage, updateOffset } from '../redux/pokemonRedux'
 
-export const useMainView = () => {
-  const { listIsLoading, pokeList, actualPage, offset } = useMySelector(state => state.pokemonReducer)
+export const usePageSearcher = () => {
+  const { actualPage, offset } = useMySelector(state => state.pokemonReducer)
 
   const dispatch = useMyDispatch()
 
@@ -24,5 +24,5 @@ export const useMainView = () => {
     dispatch(fetchPokemonList(offset))
   }, [offset])
 
-  return { listIsLoading, goBackPage, goNextPage }
+  return { goBackPage, goNextPage }
 }

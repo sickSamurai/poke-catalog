@@ -1,16 +1,15 @@
 import { Chip } from '@mui/material'
-import { typography } from '@mui/system'
 import React from 'react'
 
 import { PokeGrid } from '../components/PokemonGrid'
-import { usePokemonView } from '../hooks/usePokemonView'
+import { useMySelector } from '../redux/hooks'
 
 export const PokemonView = () => {
-  const { actualPage, pokeList } = usePokemonView()
+  const { pokeList, actualPage } = useMySelector(state => state.pokemonReducer)
 
   return (
     <>
-      <Chip sx={{ typography: 'h5' }} color='primary' label={actualPage} />
+      <Chip sx={{ typography: 'body1' }} color='primary' label={actualPage} />
       <PokeGrid pokeList={pokeList} />
     </>
   )
