@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spaced-container {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
