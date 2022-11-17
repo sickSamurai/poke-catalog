@@ -9,12 +9,13 @@ interface Props {
 }
 
 export const PokeGrid = ({ pokeList }: Props) => {
+  const PokeColumns: JSX.Element[] = []
+
+  for (let i = 0; i < 12; i += 3) PokeColumns.push(<PokeColumn pokeItems={pokeList.slice(i, i + 3)} />)
+
   return (
     <Box display='flex' flexDirection='row'>
-      <PokeColumn pokemons={pokeList.slice(0, 3)} />
-      <PokeColumn pokemons={pokeList.slice(3, 6)} />
-      <PokeColumn pokemons={pokeList.slice(6, 9)} />
-      <PokeColumn pokemons={pokeList.slice(9, 12)} />
+      {PokeColumns}
     </Box>
   )
 }
